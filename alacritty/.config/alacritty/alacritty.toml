@@ -1,0 +1,14 @@
+general.import = [
+  "~/.config/alacritty/catppuccin-macchiato.toml"
+]
+
+[env]
+TERM= "xterm-256color"
+
+[window]
+opacity = 0.90
+padding = { x = 20, y = 20 }
+blur = true
+
+[font]
+normal = { family = "MesloLGMDZ Nerd Font" }

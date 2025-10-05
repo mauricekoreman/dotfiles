@@ -1,0 +1,99 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+[](comment)\
+$os\
+$username\
+[](bg:purple fg:comment)\
+$directory\
+[](bg:green fg:purple)\
+$git_branch\
+$git_status\
+$git_state\
+[ ](fg:green bg:transparent)\
+$all\
+$line_break\
+$character\
+"""
+
+palette = 'theme'
+
+[os]
+disabled = false
+style = "bg:comment fg:foreground"
+
+[os.symbols]
+Windows = ""
+Ubuntu = "󰕈"
+SUSE = ""
+Raspbian = "󰐿"
+Mint = "󰣭"
+Macos = "󰀵"
+Manjaro = ""
+Linux = "󰌽"
+Gentoo = "󰣨"
+Fedora = "󰣛"
+Alpine = ""
+Amazon = ""
+Android = ""
+Arch = "󰣇"
+Artix = "󰣇"
+CentOS = ""
+Debian = "󰣚"
+Redhat = "󱄛"
+RedHatEnterprise = "󱄛"
+
+[username]
+show_always = true
+style_user = "bg:comment fg:foreground"
+style_root = "bg:comment fg:foreground"
+format = '[ $user ]($style)'
+
+[directory]
+style = "bg:purple"
+format = '[[  $path ](fg:background bg:purple)]($style)'
+
+[git_branch]
+symbol = ""
+style = "bg:green"
+format = '[[ $symbol $branch ](fg:background bg:green)]($style)'
+
+[git_status]
+style = "bg:green"
+format = '[[($all_status$ahead_behind )](bold fg:background bg:green)]($style)'
+
+[gcloud]
+disabled = true
+
+[package]
+disabled = true
+
+[cmd_duration]
+disabled = true
+
+[line_break]
+disabled = false
+
+[character]
+disabled = false
+success_symbol = '[❯](bold fg:green)'
+error_symbol = '[❯](bold fg:red)'
+vimcmd_symbol = '[❮](bold fg:green)'
+vimcmd_replace_one_symbol = '[❮](bold fg:lavender)'
+vimcmd_replace_symbol = '[❮](bold fg:lavender)'
+vimcmd_visual_symbol = '[❮](bold fg:yellow)'
+
+[palettes.theme]
+background = "#282A36"
+current_line = "#44475A"
+foreground = "#F8F8F2"
+comment = "#6272A4"
+cyan = "#8BE9FD"
+green = "#AEEA94"
+orange = "#FFB86C"
+pink = "#FF79C6"
+purple = "#BD93F9"
+red = "#FF5555"
+yellow = "#F1FA8C"
+
