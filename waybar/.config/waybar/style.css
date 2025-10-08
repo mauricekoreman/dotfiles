@@ -1,105 +1,101 @@
 @import "macchiato.css";
 
 * {
-  border: none;
-  border-radius: 6px;
-  min-height: 0;
-  font-family: "Meslo LG";
-  font-weight: 500;
-  font-size: 14px;
-  padding: 0;
+    font-size:15px;
+    font-family: "MesloLGM Nerd Font";
 }
 
 window#waybar {
-  background: transparent;
-  border-radius: 0px;
+    transition-duration: .5s;
+    background-color: alpha(@base, 0.5);
 }
 
 tooltip {
-  background-color: @base;
-  border: 1px solid @overlay1;
-  color: @text;
+    background: alpha(@base, 0.8);
+    color: @text;
 }
 
-#clock,
-#cpu,
-#memory,
-#battery,
-#network,
-#pulseaudio {
-  background-color: @base;
-  border: 1px solid @surface1;
-  color: @text;
-  margin: 6px 6px 2px 0px;
-  padding: 2px 8px;
-}
-
-#tray {
-  background-color: @base;
-  border: 1px solid @surface1;
-  color: @text;
-  margin: 6px 0px 2px 6px;
-  padding: 2px 4px;
-}
-
+/** ---------------------
+ * Workspaces
+ * ----------------------*/
 #workspaces {
-  background: transparent;
-  border: none;
-  margin: 6px 0px 2px 6px;
-  padding: 0;
 }
 
 #workspaces button {
-  all: initial;
-  color: @text;
-  background-color: @base;
-  border: 1px solid @surface1;
-  padding: 2px 8px;
-  border-radius: 6px;
+    color: alpha(@text,1);
+    transition: all .1s ease;
 }
 
-#workspaces button:not(:first-child) {
-  margin-left: 2px;
+#workspaces button:hover {
+    color: @pink;
+    border: none;
+    transition: all .1s ease;
 }
-
 #workspaces button.active {
-  background-color: @base;
-  border-color: @blue;
+    color: @pink;
+}
+#workspaces button.empty {
+    color: alpha(@overlay1,1);
+    border: none;
+}
+#workspaces button.empty:hover {
+    color: @pink;
+    border: none;
+    transition: all .1s ease;
+}
+#workspaces button.empty.active {
+    color: @red;
+    border: none;
+}
+
+/** ---------------------
+ * Clock
+ * ----------------------*/
+#clock{
+    color: @text;
+    transition: all .1s ease;
+}
+
+#clock:hover {
+  transition: all .1s ease;
+  color: @pink;
+}
+
+#custom-updates {
+  font-size: 16px;
   color: @text;
 }
 
-#workspaces button.urgent {
-  background-color: @overlay1;
+/** ---------------------
+ * Pulseaudio
+ * ----------------------*/
+#pulseaudio {
   color: @text;
-  border-color: @red;
 }
 
-#cpu.critical,
-#memory.critical,
-#battery.warning,
-#battery.critical,
-#battery.urgent {
-  background-color: @overlay1;
-  border: 1px solid @surface1;
-  color: @red;
+
+/** ---------------------
+ * Hardware
+ * ----------------------*/
+#disk,#cpu,#memory,#temperature{
+    transition: all .1s ease; 
+    color:@maroon;
 }
 
-/**
-.custom-spotify {
-  padding-left: 6px;
-  padding-right: 6px;
-  padding-top: 4px;
+/** ---------------------
+ * Connections
+ * ----------------------*/
+#network {
+    transition: all .3s ease;
+    color:@text;
 }
-*/
 
-#image {
-  background-color: @base;
-  padding-right: 6px;
-  padding-left: 4px;
-  margin: 6px 0px 2px 0px;
-  border-left: 1px solid @surface1;
-  border-bottom: 1px solid @surface1;
-  border-top: 1px solid @surface1;
-  border-top-right-radius: 0px;
-  border-bottom-right-radius: 0px;
+#bluetooth {
+    transition: all .1s ease;
+    color:@text;
+}
+
+#custom-power {
+  color: @text;
+
 }

@@ -1,104 +1,176 @@
+// https://github.com/elifouts/Dotfiles/blob/main/.config/waybar/config -- inspo
+// https://www.youtube.com/watch?v=rW3JKs1_oVI&t=28s
+
+// -*- mode: jsonc -*-
 {
-    "reload_style_on_change": true,
-    "layer": "top",
-    "spacing": 0,
-    "height": 0,
-    "margin-top": 0,
-    "margin-right": 0,
-    "margin-left": 0,
-    "margin-bottom": 0,
-    "modules-left": [
-        "hyprland/workspaces",
-        "tray"
-        // "custom/spotify"
-    ],
-    "modules-center": [
-        "hyprland/window"
-    ],
-    "modules-right": [
-        "memory",
-        "network",
-        "pulseaudio#output",
-        "pulseaudio#input",
-        "clock"
-    ],
-    "hyprland/window": {
-        "format": "{title:.80}",
-        "rewrite": {
-            "(.*) — Zen Browser": "$1",
-            "tms": "Terminal: Kitty",
-            "t": "Terminal: Kitty"
-        },
-        "tooltip-format": "{title}\n\nClass: {class}",
-        "separate-outputs": true,
-        "on-click": "hyprctl activewindow -j | jq -r '.title' | wl-copy; notify-send 'Copied title to clipboard'",
-        "on-click-right": "hyprctl activewindow -j | jq -r '.class' | wl-copy; notify-send 'Copied class to clipboard'"
+  "reload_style_on_change": true,
+  "layer": "top", // Waybar at top layer
+  "position": "top", // Waybar position (top|bottom|left|right)
+  "height": "auto", // Waybar height (to be removed for auto height)
+  "spacing": 20, // Gaps between modules (4px)
+  // Choose the order of the modules
+  "modules-left": [ "hyprland/workspaces" ],
+  "modules-center": [ "clock" ],
+  "modules-right": [
+    "custom/updates",
+    "group/connections",
+    "pulseaudio",
+    // "mpd",
+    "group/hardware",
+    "custom/power"
+  ],
+
+  "group/connections": {
+    "orientation": "horizontal",
+    "modules": [
+      "network",
+      "bluetooth",
+    ]
+  },
+
+  "group/hardware": {
+    "orientation": "horizontal",
+    "modules": [
+      "disk",
+      "cpu",
+      "memory",
+      "temperature"
+    ]
+  },
+
+  // Modules configuration
+
+  // workspaces
+  "hyprland/workspaces": {
+    "active-only": false,
+    "on-clicl": "activate",
+    "all-outputs": true,
+    "disable-scroll": true,
+    "all-outputs": true,
+    "warp-on-scroll": false,
+    "persistent-workspaces": {
+      "DP-2": 5,
     },
-    "hyprland/workspaces": {
-        "disable-scroll": true,
-        "all-outputs": true,
-        "tooltip": false
+  },
+
+  // Updates count
+  "custom/updates": {
+    "format": "  {}",
+    "tooltip-format": "{}",
+    "escape": true,
+    "return-type": "json",
+    // "exec": "~/dotfiles/scripts/updates.sh",
+    "restart-interval": 60,
+    // "on-click": "alacritty -e ~/dotfiles/scripts/installUpdates.sh",
+    "tooltip": false,
+  },
+
+  "keyboard-state": {
+    "numlock": true,
+    "capslock": true,
+    "format": "{name} {icon}",
+    "format-icons": {
+      "locked": "",
+      "unlocked": ""
+    }
+  },
+
+  "mpd": {
+    "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
+    "format-disconnected": "Disconnected ",
+    "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+    "unknown-tag": "N/A",
+    "interval": 5,
+    "consume-icons": {
+      "on": " "
     },
-    "tray": {
-        "icon-size": 16,
-        "show-passive-items": true,
-        "spacing": 10,
-        "tooltip": false
+    "random-icons": {
+      "off": "<span color=\"#f53c3c\"></span> ",
+      "on": " "
     },
-    "clock": {
-        "format": "{:%I:%M %p - %a, %d %b %Y}",
-        "tooltip": false,
-        "on-click": "notion-calendar-electron"
+    "repeat-icons": {
+      "on": " "
     },
-    "memory": {
-        "format": " {used}GB",
-        "interval": 1,
-        "states": {
-            "critical": 80
-        }
+    "single-icons": {
+      "on": "1 "
     },
-    "network": {
-        "format-wifi": " {bandwidthDownBits}",
-        "format-ethernet": " {bandwidthDownBits}",
-        "format-disconnected": "󰖪 no network",
-        "interval": 1,
-        "tooltip": true,
-        "tooltip-format": "IP: {ipaddr}\nInterface: {ifname}\nGateway: {gwaddr}\nNetmask: {netmask}\nUpload: {bandwidthUpBits}\nDownload: {bandwidthDownBits}"
+    "state-icons": {
+      "paused": "",
+      "playing": ""
     },
-    "pulseaudio#output": {
-        "format": "{icon}   {volume}%",
-        "format-bluetooth": "{icon}  {volume}%",
-        "format-muted": "",
-        "format-icons": {
-            "default": [
-                "",
-                ""
-            ]
-        },
-        "scroll-step": 1,
-        "on-click": "pavucontrol"
+    "tooltip-format": "MPD (connected)",
+    "tooltip-format-disconnected": "MPD (disconnected)"
+  },
+  "tray": {
+    // "icon-size": 21,
+    "spacing": 10
+    // "icons": {
+    //   "blueman": "bluetooth",
+    //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
+    // }
+  },
+  "clock": {
+    // "timezone": "America/New_York",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "format": "{:%H:%M %d/%m}"
+  },
+  "cpu": {
+    "format": "/   {usage}% ",
+  },
+  "memory": {
+    "format": "/   {}% "
+  },
+  "disk": {
+    "interval": 30,
+    "format": " {percentage_used}% ",
+    "path": "/"
+  },
+  "temperature": {
+    "critical-threshold": 80,
+    "format": "/ {icon} {temperatureC}°C",
+    "format-icons": ["", "", ""]
+  },
+  "network": {
+    // "interface": "wlp2*", // (Optional) To force the use of this interface
+    "format": "{ifname}",
+    "format-wifi": "󰤨 {signalStrength}%",
+    "format-ethernet": "󰤨 ",
+    "format-disconnected": "󰤭",
+    "tooltip-format": " {ifname} via {gwaddri}",
+    "tooltip-format-wifi": "󰤨 {essid} ({signalStrength}%)",
+    "tooltip-format-ethernet": " {ifname} ({ipaddr}/{cidr})",
+    "tooltip-format-disconnected": "Disconnected",
+    "max-length": 50,
+  },
+
+  "pulseaudio": {
+    "format": "{icon} {volume}% {format_source}",
+    "format-bluetooth": "{volume}% {icon} {format_source}",
+    "format-bluetooth-muted": " {icon} {format_source}",
+    "format-muted": " {format_source}",
+    "format-source": " {volume}%",
+    "format-source-muted": "",
+    "format-icons": {
+      "headphone": "󰋋",
+      "hands-free": "󰋎",
+      "headset": "󰋎",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", "", ""]
     },
-    "pulseaudio#input": {
-        "format-source": " {volume}%",
-        "format-source-muted": " MUTED",
-        "format": "{format_source}",
-        "tooltip": false,
-        "scroll-step": 1,
-        "smooth-scrolling-threshold": 1,
-        "max-volume": 100,
-        "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
-        "on-click-middle": "pavucontrol",
-        "on-scroll-up": "pactl set-source-volume @DEFAULT_SOURCE@ +1%",
-        "on-scroll-down": "pactl set-source-volume @DEFAULT_SOURCE@ -1%"
-    },
-    // "custom/spotify": {
-        // "exec": "python3 ~/dotfiles/hyprland/.config/waybar/custom/spotify/mediaplayer.py --player spotify",
-        // "format": "{text:.50}  ",
-        // "tooltip-format": "{text}",
-        // "return-type": "json",
-        // "on-click": "playerctl --player=spotify play-pause",
-        // "on-click-right": "~/dotfiles/hyprland/.config/waybar/custom/focus_class.sh 'Spotify'",
-        // "on-scroll-up": "playerctl --player=spotify next",
-        // "on-scroll-down": "playerctl --player=spotify previous"
-    // },
+    "on-click": "pavucontrol"
+  },
+  "custom/power": {
+    "format" : "  ",
+    "tooltip": false,
+    "menu": "on-click",
+    "menu-file": "~/.config/waybar/power_menu.xml", // Menu file in resources folder
+    "menu-actions": {
+      "shutdown": "shutdown",
+      "reboot": "reboot",
+      "suspend": "systemctl suspend",
+      "hibernate": "systemctl hibernate"
+    }
+  }
 }
