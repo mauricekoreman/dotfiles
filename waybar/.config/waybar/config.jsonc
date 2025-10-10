@@ -117,7 +117,7 @@
     "format": "/ {icon} {temperatureC}°C",
     "format-icons": ["", "", ""],
     "on-click": "alacritty -e btop",
-    "hwmon-path": "~/sys/class/hwmon/hwmon0/temp1_input",
+    "hwmon-path": "/sys/class/hwmon/hwmon3/temp3_input",
   },
   "network": {
     // "interface": "wlp2*", // (Optional) To force the use of this interface
