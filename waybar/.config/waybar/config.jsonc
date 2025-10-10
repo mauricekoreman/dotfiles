@@ -13,20 +13,12 @@
   "modules-center": [ "clock" ],
   "modules-right": [
     "custom/updates",
-    "group/connections",
+    "network",
     "pulseaudio",
     // "mpd",
     "group/hardware",
     "custom/power"
   ],
-
-  "group/connections": {
-    "orientation": "horizontal",
-    "modules": [
-      "network",
-      "bluetooth",
-    ]
-  },
 
   "group/hardware": {
     "orientation": "horizontal",
@@ -55,11 +47,11 @@
 
   // Updates count
   "custom/updates": {
-    "format": "  {}",
+    "format": " {}",
     "tooltip-format": "{}",
     "escape": true,
     "return-type": "json",
-    // "exec": "~/dotfiles/scripts/updates.sh",
+    "exec": "~/dotfiles/scripts/updates.sh",
     "restart-interval": 60,
     // "on-click": "alacritty -e ~/dotfiles/scripts/installUpdates.sh",
     "tooltip": false,
@@ -101,14 +93,6 @@
     "tooltip-format": "MPD (connected)",
     "tooltip-format-disconnected": "MPD (disconnected)"
   },
-  "tray": {
-    // "icon-size": 21,
-    "spacing": 10
-    // "icons": {
-    //   "blueman": "bluetooth",
-    //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
-    // }
-  },
   "clock": {
     // "timezone": "America/New_York",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
@@ -116,19 +100,24 @@
   },
   "cpu": {
     "format": "/   {usage}% ",
+    "on-click": "alacritty -e btop",
   },
   "memory": {
-    "format": "/   {}% "
+    "format": "/   {}% ",
+    "on-click": "alacritty -e btop",
   },
   "disk": {
     "interval": 30,
     "format": " {percentage_used}% ",
-    "path": "/"
+    "path": "/",
+    "on-click": "alacritty -e btop",
   },
   "temperature": {
     "critical-threshold": 80,
     "format": "/ {icon} {temperatureC}°C",
-    "format-icons": ["", "", ""]
+    "format-icons": ["", "", ""],
+    "on-click": "alacritty -e btop",
+    "hwmon-path": "~/sys/class/hwmon/hwmon0/temp1_input",
   },
   "network": {
     // "interface": "wlp2*", // (Optional) To force the use of this interface
@@ -145,7 +134,7 @@
 
   "pulseaudio": {
     "format": "{icon} {volume}% {format_source}",
-    "format-bluetooth": "{volume}% {icon} {format_source}",
+    "format-bluetooth": " {volume}% {format_source}",
     "format-bluetooth-muted": " {icon} {format_source}",
     "format-muted": " {format_source}",
     "format-source": " {volume}%",

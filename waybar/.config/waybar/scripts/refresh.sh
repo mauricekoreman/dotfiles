@@ -2,6 +2,3 @@
 
 killall waybar
 waybar &
-
-
-

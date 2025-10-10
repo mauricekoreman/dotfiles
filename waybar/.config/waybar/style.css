@@ -22,14 +22,19 @@ tooltip {
 }
 
 #workspaces button {
-    color: alpha(@text,1);
+    color: @text;
     transition: all .1s ease;
+    border: none;
+    box-shadow: none;
 }
 
 #workspaces button:hover {
     color: @pink;
+    font-weight: normal;
     border: none;
     transition: all .1s ease;
+    background: @base;
+    box-shadow: none;
 }
 #workspaces button.active {
     color: @pink;
@@ -40,11 +45,10 @@ tooltip {
 }
 #workspaces button.empty:hover {
     color: @pink;
-    border: none;
     transition: all .1s ease;
 }
 #workspaces button.empty.active {
-    color: @red;
+    color: @pink;
     border: none;
 }
 
@@ -66,6 +70,18 @@ tooltip {
   color: @text;
 }
 
+#custom-updates.green {
+  color: @green;
+}
+
+#custom-updates.yellow {
+  color: @yellow;
+}
+
+#custom-updates.red {
+  color: @red;
+}
+
 /** ---------------------
  * Pulseaudio
  * ----------------------*/
@@ -79,7 +95,7 @@ tooltip {
  * ----------------------*/
 #disk,#cpu,#memory,#temperature{
     transition: all .1s ease; 
-    color:@maroon;
+    color:@text;
 }
 
 /** ---------------------
@@ -87,11 +103,6 @@ tooltip {
  * ----------------------*/
 #network {
     transition: all .3s ease;
-    color:@text;
-}
-
-#bluetooth {
-    transition: all .1s ease;
     color:@text;
 }
 
