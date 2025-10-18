@@ -105,8 +105,3 @@ tooltip {
     transition: all .3s ease;
     color:@text;
 }
-
-#custom-power {
-  color: @text;
-
-}
