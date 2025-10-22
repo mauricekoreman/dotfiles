@@ -38,9 +38,10 @@
     "disable-scroll": true,
     "all-outputs": true,
     "warp-on-scroll": false,
-    "persistent-workspaces": {
-      "DP-2": 5,
-    },
+    "format": "{name}",
+    //"persistent-workspaces": {
+    //  "DP-2": 5,
+    //},
   },
 
   // Updates count
@@ -51,7 +52,6 @@
     "return-type": "json",
     "exec": "~/dotfiles/scripts/updates.sh",
     "restart-interval": 60,
-    // "on-click": "alacritty -e ~/dotfiles/scripts/installUpdates.sh",
     "tooltip": false,
   },
 
@@ -112,7 +112,7 @@
   },
   "temperature": {
     "critical-threshold": 80,
-    "format": "/ {icon} {temperatureC}°C",
+    "format": "/ {icon} {temperatureC}°C ",
     "format-icons": ["", "", ""],
     "on-click": "alacritty -e btop",
     "hwmon-path": "/sys/class/hwmon/hwmon3/temp3_input",

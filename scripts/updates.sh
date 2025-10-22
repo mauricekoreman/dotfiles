@@ -42,10 +42,9 @@ if [[ $(_checkCommandExists "pacman") == 0 ]]; then
 
   check_lock_files
 
-  # updates_aur=$($aur_helper -Qum | wc -l)
+  updates_aur=$(yay -Qum | wc -l)
   updates_pacman=$(checkupdates | wc -l)
-  # updates=$((updates_aur + updates_pacman))
-  updates=$((updates_pacman))
+  updates=$((updates_aur + updates_pacman))
 else
   updates=0
 fi
