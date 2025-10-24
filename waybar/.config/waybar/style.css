@@ -22,7 +22,7 @@ tooltip {
 }
 
 #workspaces button {
-    color: @text;
+    color: @overlay;
     transition: all .1s ease;
     border: none;
     box-shadow: none;
@@ -40,7 +40,7 @@ tooltip {
     color: @pink;
 }
 #workspaces button.empty {
-    color: alpha(@overlay1,1);
+    color: @text;
     border: none;
 }
 #workspaces button.empty:hover {
