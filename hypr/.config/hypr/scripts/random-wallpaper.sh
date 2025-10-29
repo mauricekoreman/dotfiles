@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# https://bingwallpaper.anerg.com/archive/us/202409
 
 WALLPAPER_DIR="$HOME/dotfiles/backgrounds"
 
