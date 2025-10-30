@@ -1,4 +1,4 @@
-@import "macchiato.css";
+@import url("file:///home/maurice/.cache/hellwal/waybar-colors.css");
 
 * {
     font-size:15px;
@@ -7,11 +7,11 @@
 
 window#waybar {
     transition-duration: .5s;
-    background-color: alpha(@base, 0.5);
+    background-color: alpha(@background, 0.7);
 }
 
 tooltip {
-    background: alpha(@base, 0.8);
+    background-color: alpha(@background, 0.7);
     color: @text;
 }
 
@@ -22,14 +22,14 @@ tooltip {
 }
 
 #workspaces button {
-    color: @text;
+    color: @color11
     transition: all .1s ease;
     border: none;
     box-shadow: none;
 }
 
 #workspaces button:hover {
-    color: @pink;
+    color: @foreground;
     font-weight: normal;
     border: none;
     transition: all .1s ease;
@@ -37,18 +37,18 @@ tooltip {
     box-shadow: none;
 }
 #workspaces button.active {
-    color: @pink;
+    color: @foreground;
 }
 #workspaces button.empty {
-    color: @overlay2;
+    color: @color2;
     border: none;
 }
 #workspaces button.empty:hover {
-    color: @pink;
+    color: @foreground;
     transition: all .1s ease;
 }
 #workspaces button.empty.active {
-    color: @pink;
+    color: @foreground;
     border: none;
 }
 
@@ -56,37 +56,37 @@ tooltip {
  * Clock
  * ----------------------*/
 #clock{
-    color: @text;
+    color: @color14;
     transition: all .1s ease;
 }
 
 #clock:hover {
   transition: all .1s ease;
-  color: @pink;
+  color: @color14;
 }
 
 #custom-updates {
   font-size: 16px;
-  color: @text;
+  color: @color14;
 }
 
 #custom-updates.green {
-  color: @green;
+  color: #a6da95;
 }
 
 #custom-updates.yellow {
-  color: @yellow;
+  color: #eed49f;
 }
 
 #custom-updates.red {
-  color: @red;
+  color: #ed8796;
 }
 
 /** ---------------------
  * Pulseaudio
  * ----------------------*/
 #pulseaudio {
-  color: @text;
+  color: @color14;
 }
 
 
@@ -95,7 +95,7 @@ tooltip {
  * ----------------------*/
 #disk,#cpu,#memory,#temperature{
     transition: all .1s ease; 
-    color:@text;
+    color:@color14;
 }
 
 /** ---------------------
@@ -103,5 +103,5 @@ tooltip {
  * ----------------------*/
 #network {
     transition: all .3s ease;
-    color:@text;
+    color:@color14;
 }
