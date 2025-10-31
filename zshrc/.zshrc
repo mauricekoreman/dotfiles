@@ -51,7 +51,7 @@ export EDITOR='nvim'
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ff="fzf --preview 'bat --style=numbers --color=always {}'"
 alias fman="man -k . | fzf | awk '{print $1}' | xargs -r man"
-alias pinstall="yay -Slq | fzf --preview='yay -Si {1}' | xargs -r yay -S --needed"
+alias pinstall="yay -Slq | fzf --preview='yay -Si {1}' | xargs -r yay -S --needed --noconfirm"
 
 eval "$(starship init zsh)"
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
