@@ -22,7 +22,7 @@ tooltip {
 }
 
 #workspaces button {
-    color: @color11
+    color: @color11;
     transition: all .1s ease;
     border: none;
     box-shadow: none;
