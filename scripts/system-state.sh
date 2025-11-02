@@ -4,7 +4,7 @@
 
 case "$(printf "Lock\nReboot\nShutdown" | fuzzel --dmenu --minimal-lines -i --hide-prompt)" in
 "Shutdown") shutdown now ;;
-"Reboot") reboot now ;;
+"Reboot") reboot ;;
 "Lock") hyprlock ;;
 *) exit 1 ;;
 esac
