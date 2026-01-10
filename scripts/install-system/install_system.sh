@@ -6,7 +6,7 @@ if [[ "$EUID" == 0 ]]; then
 fi
 
 echo "Installing packages from pgklist.txt..."
-sudo pacman -Syu --noconfirm --needed - <pgklist.txt
+sudo yay -Syu --noconfirm --needed - <pgklist.txt
 
 echo "Enabling essential servives..."
 # sudo systemctl enable NetworkManager

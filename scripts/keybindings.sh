@@ -22,6 +22,7 @@ bindings['Lock screen']='Super CTRL Q'
 bindings['Restart waybar']='Super SHIFT W'
 bindings['Random wallpaper']='Super SHIFT G'
 bindings['Open keybindings']='Super SHIFT K'
+bindings['Swap/move window [direction]']='Super Ctrl left/right/up/down'
 
 for desc in "${!bindings[@]}"; do
   key="${bindings[$desc]}"
@@ -31,7 +32,7 @@ done
 
 # Use 'column -t -s:' to align the output neatly before piping to fuzzel
 # The '-t' creates a table, and '-s:' specifies the column separator.
-column -t -s ':' /tmp/keybindings_list.txt | fuzzel --dmenu -i --hide-prompt -w 40
+column -t -s ':' /tmp/keybindings_list.txt | fuzzel --dmenu -i --hide-prompt -w 60
 
 # Clean up the temporary file
 rm /tmp/keybindings_list.txt

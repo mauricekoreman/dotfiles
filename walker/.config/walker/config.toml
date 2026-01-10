@@ -1,0 +1,38 @@
+# https://walkerlauncher.com/docs/
+
+force_keyboard_focus = true
+hide_quick_activation = true
+hide_action_hints = false
+
+[providers]
+default = [
+  "desktopapplications",
+  "calc",
+  "websearch",
+  "files",
+]
+
+[[providers.prefixes]]
+prefix = ";"
+provider = "providerlist"
+
+[[providers.prefixes]]
+prefix = "/"
+provider = "files"
+
+[[providers.prefixes]]
+prefix = "="
+provider = "calc"
+
+[[providers.prefixes]]
+prefix = "@"
+provider = "websearch"
+
+[[providers.prefixes]]
+prefix = ":"
+provider = "clipboard"
+
+[[providers.prefixes]]
+prefix = ">"
+provider = "runner"
+
